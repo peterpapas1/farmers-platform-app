@@ -20,11 +20,8 @@ function ApiCall({ LAT, LON }) {
   };
 
   useEffect(() => {
-    // My personal API Key is: 0cc0d8a57951e6604c481c7a11931b89
-    const API_KEY = "0cc0d8a57951e6604c481c7a11931b89";
-    // Coordinates for Melbourne
-    // const LAT = -37.8136;
-    // const LON = 144.9631;
+    // My personal API Key is: ADD YOUR API KEY HERE
+    const API_KEY = "ADD YOUR API KEY";
     axios
       .get(
         `https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}&units=metric`
