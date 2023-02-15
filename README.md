@@ -1,4 +1,4 @@
-# FOLLOW THE GUID TO RUN THE PROJECT ON LOCAL
+# FOLLOW THE GUIDE TO RUN THE PROJECT ON LOCAL
 
 I will create a build version with a hook later on
 
