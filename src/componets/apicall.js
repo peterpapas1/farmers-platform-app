@@ -12,6 +12,7 @@ function ApiCall({ LAT, LON }) {
   const [wheatMinMaxTemperature, setWheatMinMaxTemperature] = useState(false);
   const [wheatIdealTemperature, setWheatIdealTemperature] = useState(false);
   const [wheatIdealHumidity, setWheatIdealHumidity] = useState(false);
+  const [weeklyForecast, setWeeklyForecast] = useState([]);
 
   const wheat = {
     minMaxTemperature: [10, 27],
@@ -34,6 +35,24 @@ function ApiCall({ LAT, LON }) {
         setCityName(response.data.name);
         setMaxTemp(response.data.main.temp_max);
         setMinTemp(response.data.main.temp_min);
+        // Weekly forecast
+        setWeeklyForecast(response.data.list.slice(0, 7));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [LAT, LON]);
+
+  useEffect(() => {
+    // My personal API Key is: 0cc0d8a57951e6604c481c7a11931b89
+    const API_KEY = "0cc0d8a57951e6604c481c7a11931b89";
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${LAT}&lon=${LON}&appid=${API_KEY}&units=metric`
+      )
+      .then((response) => {
+        // Weekly forecast
+        setWeeklyForecast(response.data.list.slice(0, 100));
       })
       .catch((error) => {
         console.log(error);
@@ -142,6 +161,30 @@ function ApiCall({ LAT, LON }) {
           </p>
         </div>
       )}
+      <p>Weekly forecast:</p>
+      {weeklyForecast.map((day, index) => {
+        const date = new Date(day.dt * 1000);
+        const weekday = [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+        ][date.getDay()];
+        return (
+          <div
+            className="w-64 p-4 m-auto bg-white shadow-lg rounded-2xl dark:bg-gray-800"
+            key={index}
+          >
+            <p>Date: {day.dt_txt}</p>
+            <p>{weekday}</p>
+            <p>Temperature: {day.main.temp}°C</p>
+            <p>Humidity: {day.main.humidity}%</p>
+          </div>
+        );
+      })}
     </div>
   );
 }

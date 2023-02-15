@@ -46,7 +46,8 @@ function App() {
         <div className="m-5 border-2 border-indigo-200 hover:border-indigo-500">
           <label for="cityname">City Name: </label>
           <input
-            className="m-2 border-2 border-indigo-200 hover:border-indigo-500"
+            className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 hover:border-indigo-500"
+            placeholder="Name of the city"
             type="text"
             value={city}
             onChange={handleCityChange}
