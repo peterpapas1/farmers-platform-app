@@ -102,7 +102,7 @@ function ApiCall({ LAT, LON }) {
           className="bg-green-200 border-green-600 text-green-600 border-l-4 p-4"
           role="alert"
         >
-          <p className="font-bold">Temperature</p>
+          <p className="font-bold">Ideal</p>
           <p>Temperature is ideal for wheat growth.</p>
         </div>
       ) : (
@@ -125,7 +125,7 @@ function ApiCall({ LAT, LON }) {
           className="bg-green-200 border-green-600 text-green-600 border-l-4 p-4"
           role="alert"
         >
-          <p className="font-bold">Humidity</p>
+          <p className="font-bold">Ideal</p>
           <p>Humidity is ideal for wheat growth.</p>
         </div>
       ) : (
