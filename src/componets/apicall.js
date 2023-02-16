@@ -93,7 +93,7 @@ function ApiCall({ LAT, LON }) {
   }, [humidity]);
 
   return (
-    <div className="lex flex-col space-y-2">
+    <div className="lex flex-col space-y-2 bg-slate-200">
       <p>City: {cityName}</p>
       <p>The temperature is: {temperature}°C</p>
       <p>The humidity is: {humidity}%</p>
@@ -174,14 +174,30 @@ function ApiCall({ LAT, LON }) {
           "Saturday",
         ][date.getDay()];
         return (
-          <div
-            className="w-64 p-4 m-auto bg-white shadow-lg rounded-2xl dark:bg-gray-800"
-            key={index}
-          >
-            <p>Date: {day.dt_txt}</p>
-            <p>{weekday}</p>
-            <p>Temperature: {day.main.temp}°C</p>
-            <p>Humidity: {day.main.humidity}%</p>
+          <div className="w-64 p-4 m-auto bg-white shadow-lg rounded-2xl dark:bg-gray-800">
+            <div className="flex flex-col items-center justify-center">
+              <p className="">Date: {day.dt_txt}</p>
+              <p className="text-xl font-semibold mb-2">{weekday}</p>
+              <p className="text-3xl font-bold mb-2">{day.main.temp}°C</p>
+              <div className="flex items-center mb-2">
+                <img
+                  className="w-8 h-8 mr-2"
+                  src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                  alt="Weather icon"
+                />
+                <p className="text-lg font-medium">
+                  {day.weather[0].description}
+                </p>
+              </div>
+              <div className="flex items-center justify-between w-full">
+                <p className="text-sm font-medium">
+                  Humidity: {day.main.humidity}%
+                </p>
+                <p className="text-sm font-medium">
+                  Wind: {day.wind.speed} m/s
+                </p>
+              </div>
+            </div>
           </div>
         );
       })}
