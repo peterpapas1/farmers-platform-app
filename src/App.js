@@ -1,13 +1,34 @@
 import "./App.css";
-import ApiCall from "./componets/apicall";
-import Openweather from "./componets/Openweather";
+import ApiCall from "./components/apicall";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Slider from "@mui/material/Slider";
+import Header from "./components/Header";
+import DropDownMenu from "./components/DropDownMenu";
 
 function App() {
   const [city, setCity] = useState("melbourne");
   const [LAT, setLat] = useState(null);
   const [LON, setLon] = useState(null);
+  const [SliderMaxTempValue, setSliderMaxTempValue] = useState(27);
+  const [SliderMinTempValue, setSliderMinTempValue] = useState(10);
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleResize = () => setWidth(window.innerWidth);
+
+  const handleSliderMaxTempValueChange = (event) => {
+    setSliderMaxTempValue(parseInt(event.target.value));
+  };
+
+  const handleSliderMinTempValueChange = (event) => {
+    setSliderMinTempValue(parseInt(event.target.value));
+  };
 
   const handleCityChange = (e) => {
     setCity(e.target.value);
@@ -40,22 +61,89 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header></header>
-      <div style={openWeatherStyles}>
+    <div className="App bg-gradient-to-r from-cyan-500 to-blue-500">
+      {width > 768 ? (
+        <Header />
+      ) : (
+        <DropDownMenu
+          label="Menu"
+          items={[
+            {
+              label: "Home",
+              link: "#",
+            },
+            {
+              label: "Weather",
+              link: "#",
+            },
+            {
+              label: "Manuals",
+              link: "#",
+            },
+            {
+              label: "Blog",
+              link: "#",
+            },
+          ]}
+        />
+      )}
+      <div className="bg-white m-auto sm:max-w-xs md:max-w-sm drop-shadow-xl rounded-lg">
         <div className="m-5 border-2 border-indigo-200 hover:border-indigo-500">
-          <label for="cityname">City Name: </label>
+          <label
+            htmlFor="cityname"
+            className="block font-medium text-gray-700 mb-2"
+          >
+            City Name:
+          </label>
           <input
-            className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 hover:border-indigo-500"
+            id="cityname"
+            className={`block w-full px-4 py-2 border rounded-md bg-white text-gray-900 ${
+              city.length === 0
+                ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+                : "border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+            } focus:outline-none focus:ring-2 transition duration-300 ease-in-out`}
             placeholder="Name of the city"
             type="text"
             value={city}
             onChange={handleCityChange}
+            required
           />
-          {LAT && LON ? <ApiCall LAT={LAT} LON={LON} /> : null}
-        </div>
-        <div className="grid place-items-center m-10 drop-shadow-xl rounded-lg">
-          <Openweather />
+          <p>Maximum Temperature: {SliderMaxTempValue}°C</p>
+          {/* <input
+            type="range"
+            min="-100"
+            max="100"
+            // value={value}
+            onChange={handleSliderMaxTempValueChange}
+          /> */}
+          <Slider
+            getAriaLabel={() => "Temperature range"}
+            onChange={handleSliderMaxTempValueChange}
+            valueLabelDisplay="auto"
+            defaultValue={27}
+            // getAriaValueText={SliderValue}
+            min={-100}
+            max={100}
+          />
+          <p>Minimum Temperature: {SliderMinTempValue}°C</p>
+          <Slider
+            getAriaLabel={() => "Temperature range"}
+            onChange={handleSliderMinTempValueChange}
+            valueLabelDisplay="auto"
+            defaultValue={10}
+            // getAriaValueText={SliderValue}
+            min={-100}
+            max={100}
+          />
+
+          {LAT && LON ? (
+            <ApiCall
+              LAT={LAT}
+              LON={LON}
+              SliderMaxTempValue={SliderMaxTempValue}
+              SliderMinTempValue={SliderMinTempValue}
+            />
+          ) : null}
         </div>
       </div>
     </div>
