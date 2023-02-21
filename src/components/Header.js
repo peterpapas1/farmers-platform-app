@@ -13,26 +13,20 @@ function Header() {
               <div class="hidden md:block">
                 <div class="flex items-baseline ml-10 space-x-4">
                   <a
-                    class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    href="/#"
-                  >
-                    Home
-                  </a>
-                  <a
                     class="text-gray-800 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    href="/#"
+                    href="/"
                   >
                     Weather
                   </a>
                   <a
                     class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    href="/#"
+                    href="/Manuals"
                   >
                     Manuals
                   </a>
                   <a
                     class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    href="/#"
+                    href="/Blog"
                   >
                     Blog
                   </a>

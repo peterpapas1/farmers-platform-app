@@ -22,14 +22,28 @@ function ApiCall(props) {
   const wheat = useMemo(
     () => ({
       minMaxTemperature: [props.SliderMinTempValue, props.SliderMaxTempValue],
-      idealTemperature: [18, 24],
-      idealHumidity: [60, 70],
+      idealTemperature: [
+        props.SliderIdealMinTempValue,
+        props.SliderIdealMaxTempValue,
+      ],
+      idealHumidity: [
+        props.SliderMinHumidityValue,
+        props.SliderMaxHumidityValue,
+      ],
     }),
-    [props.SliderMinTempValue, props.SliderMaxTempValue]
+    [
+      props.SliderMinTempValue,
+      props.SliderMaxTempValue,
+      props.SliderMinHumidityValue,
+      props.SliderMaxHumidityValue,
+      props.SliderIdealMinTempValue,
+      props.SliderIdealMaxTempValue,
+    ]
   );
 
   useEffect(() => {
     // My personal API Key is: 0cc0d8a57951e6604c481c7a11931b89
+    // Testing Lat and Long values
     console.log("LAT:", props.LAT);
     console.log("LON:", props.LON);
     const API_KEY = "0cc0d8a57951e6604c481c7a11931b89";
@@ -56,6 +70,10 @@ function ApiCall(props) {
     props.LON,
     props.SliderMaxTempValue,
     props.SliderMinTempValue,
+    props.SliderMinHumidityValue,
+    props.SliderMaxHumidityValue,
+    props.SliderIdealMinTempValue,
+    props.SliderIdealMaxTempValue,
   ]);
 
   useEffect(() => {
@@ -170,79 +188,84 @@ function ApiCall(props) {
     return <p>Loading...</p>;
   }
   return (
-    <div className="flex flex-col space-y-2 bg-gray-200 p-6">
-      <div className="flex items-center space-x-2">
-        <h1 className="text-2xl font-bold">🌾{cityName}🌾</h1>
-      </div>
-      <div className="flex flex-col space-y-2">
-        <p>The temperature is: {temperature}°C</p>
-        <p>The humidity is: {humidity}%</p>
-        <p>The wind speed is: {windSpeed} m/s</p>
-        <p>Max temperature: {maxTemp}°C</p>
-        <p>Min temperature: {minTemp}°C</p>
-      </div>
-      {wheatMinMaxTemperature ? (
-        <></>
-      ) : (
-        <div
-          className="bg-red-200 border-red-600 text-red-600 border-l-4 p-4"
-          role="alert"
-        >
-          <p className="font-bold">Alert</p>
-          <p>Temperature is outside the safety zone.</p>
-          <p>Current temperature is: {temperature}°C</p>
-          <p>
-            Safety zone temperature is between: {wheat.minMaxTemperature[0]}°C -{" "}
-            {wheat.minMaxTemperature[1]}°C
-          </p>
-        </div>
-      )}
-      {wheatIdealTemperature ? (
-        <div
-          className="bg-green-200 border-green-600 text-green-600 border-l-4 p-4"
-          role="alert"
-        >
-          <p className="font-bold">Ideal</p>
-          <p>Temperature is ideal for wheat growth.</p>
-        </div>
-      ) : (
-        <div
-          className="bg-yellow-200 border-yellow-600 text-yellow-600 border-l-4 p-4"
-          role="alert"
-        >
-          <p className="font-bold">Warning</p>
-          <p>Temperature is not ideal for wheat growth</p>
-          <p>Current temperature is: {temperature}°C</p>
-          <p>
-            Ideal temperature is between: {wheat.idealTemperature[0]}°C -{" "}
-            {wheat.idealTemperature[1]}°C
-          </p>
-        </div>
-      )}
+    <div className="flex flex-col space-y-2 bg-gray-100 p-2 rounded-md shadow-lg">
+      <div className="w-auto p-4 m-auto bg-white shadow-lg rounded-2xl dark:bg-gray-800">
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex items-center space-x-2">
+            <h1 className="text-2xl font-bold">🌾{cityName}🌾</h1>
+          </div>
+          <div className="flex flex-col space-y-2">
+            <p>Current temperature is: {temperature}°C</p>
+            <p>Current humidity is: {humidity}%</p>
+            <p>Current wind speed is: {windSpeed} m/s</p>
+            {/* <p>Max temperature: {maxTemp}°C</p>
+        <p>Min temperature: {minTemp}°C</p> */}
+          </div>
 
-      {wheatIdealHumidity ? (
-        <div
-          className="bg-green-200 border-green-600 text-green-600 border-l-4 p-4"
-          role="alert"
-        >
-          <p className="font-bold">Ideal</p>
-          <p>Humidity is ideal for wheat growth.</p>
+          {wheatMinMaxTemperature ? (
+            <></>
+          ) : (
+            <div
+              className="bg-red-200 border-red-600 text-red-600 border-l-4 p-4"
+              role="alert"
+            >
+              <p className="font-bold">Alert</p>
+              <p>Temperature is outside the safety zone.</p>
+              <p>Current temperature is: {temperature}°C</p>
+              <p>
+                Safety zone temperature is between: {wheat.minMaxTemperature[0]}
+                °C - {wheat.minMaxTemperature[1]}°C
+              </p>
+            </div>
+          )}
+          {wheatIdealTemperature ? (
+            <div
+              className="bg-green-200 border-green-600 text-green-600 border-l-4 p-4"
+              role="alert"
+            >
+              <p className="font-bold">Ideal</p>
+              <p>Temperature is ideal for wheat growth.</p>
+            </div>
+          ) : (
+            <div
+              className="bg-yellow-200 border-yellow-600 text-yellow-600 border-l-4 p-4"
+              role="alert"
+            >
+              <p className="font-bold">Warning</p>
+              <p>Temperature is not ideal for wheat growth</p>
+              <p>Current temperature is: {temperature}°C</p>
+              <p>
+                Ideal temperature is between: {wheat.idealTemperature[0]}°C -{" "}
+                {wheat.idealTemperature[1]}°C
+              </p>
+            </div>
+          )}
+
+          {wheatIdealHumidity ? (
+            <div
+              className="bg-green-200 border-green-600 text-green-600 border-l-4 p-4"
+              role="alert"
+            >
+              <p className="font-bold">Ideal</p>
+              <p>Humidity is ideal for wheat growth.</p>
+            </div>
+          ) : (
+            <div
+              className="bg-yellow-200 border-yellow-600 text-yellow-600 border-l-4 p-4"
+              role="alert"
+            >
+              <p class="font-bold">Warning</p>
+              <p>Humidity is not Ideal for Wheat growth.</p>
+              <p>Current humidity is: {humidity}%</p>
+              <p>
+                Ideal humidity is between: {wheat.idealHumidity[0]}% -{" "}
+                {wheat.idealHumidity[1]}%
+              </p>
+            </div>
+          )}
         </div>
-      ) : (
-        <div
-          className="bg-yellow-200 border-yellow-600 text-yellow-600 border-l-4 p-4"
-          role="alert"
-        >
-          <p class="font-bold">Warning</p>
-          <p>Humidity is not Ideal for Wheat growth.</p>
-          <p>Current humidity is: {humidity}%</p>
-          <p>
-            Ideal humidity is between: {wheat.idealHumidity[0]}% -{" "}
-            {wheat.idealHumidity[1]}%
-          </p>
-        </div>
-      )}
-      <p>Weekly forecast:</p>
+      </div>
+      <p className="font-bold text-lg">Weekly forecast:</p>
       {weeklyForecast.map((day, index) => {
         const date = new Date(day.dt * 1000);
         const weekday = [
@@ -255,7 +278,7 @@ function ApiCall(props) {
           "Saturday",
         ][date.getDay()];
         return (
-          <div className="w-64 p-4 m-auto bg-white shadow-lg rounded-2xl dark:bg-gray-800">
+          <div className="w-auto p-4 m-auto bg-white shadow-lg rounded-2xl dark:bg-gray-800">
             <div className="flex flex-col items-center justify-center">
               <p className="">Date: {day.dt_txt}</p>
               <p className="text-xl font-semibold mb-2">{weekday}</p>
@@ -279,23 +302,7 @@ function ApiCall(props) {
                 </p>
               </div>
             </div>
-            {/* {wheatMinMaxTemperature ? (
-              <></>
-            ) : (
-              <div
-                className="bg-red-200 border-red-600 text-red-600 border-l-4 p-4"
-                role="alert"
-              >
-                <p class="font-bold">Alert</p>
-                <p>Temperature is outside the safety zone.</p>
-                <p>Current temperature is: {day.main.temp}°C</p>
-                <p>
-                  Safety zone temperature is between:{" "}
-                  {wheat.minMaxTemperature[0]}°C - {wheat.minMaxTemperature[1]}
-                  °C
-                </p>
-              </div>
-            )} */}
+
             {wheatIdealTemperatureWeekly ? (
               <div
                 className="bg-green-200 border-green-600 text-green-600 border-l-4 p-4"
