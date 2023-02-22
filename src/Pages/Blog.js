@@ -9,9 +9,9 @@ function Blog() {
           Latest Articles
         </h2>
         <div className="overflow-hidden rounded-lg shadow-lg cursor-pointer">
-          <a href="#" className="block w-full h-full">
+          <a href="/" className="block w-full h-full">
             <img
-              alt="blog photo"
+              alt="A farmer wearing a straw hat"
               src="https://res.cloudinary.com/dxetyokin/image/upload/c_scale,f_auto,q_auto/v1676984967/Assigment%201/pexels-jake-heinemann-1482101_kminaj.jpg"
               className="object-cover w-full h-60 sm:h-80 md:h-64 lg:h-72"
             />
@@ -39,9 +39,9 @@ function Blog() {
         </div>
 
         <div className="overflow-hidden rounded-lg shadow-lg cursor-pointer">
-          <a href="#" className="block w-full h-full">
+          <a href="/" className="block w-full h-full">
             <img
-              alt="blog photo"
+              alt="A farmer wearing a straw hat"
               src="https://res.cloudinary.com/dxetyokin/image/upload/c_scale,f_auto,q_auto/v1676984967/Assigment%201/pexels-jake-heinemann-1482101_kminaj.jpg"
               className="object-cover w-full h-60 sm:h-80 md:h-64 lg:h-72"
             />
@@ -69,9 +69,9 @@ function Blog() {
         </div>
 
         <div className="overflow-hidden rounded-lg shadow-lg cursor-pointer">
-          <a href="#" className="block w-full h-full">
+          <a href="/" className="block w-full h-full">
             <img
-              alt="blog photo"
+              alt="A farmer wearing a straw hat"
               src="https://res.cloudinary.com/dxetyokin/image/upload/c_scale,f_auto,q_auto/v1676984967/Assigment%201/pexels-jake-heinemann-1482101_kminaj.jpg"
               className="object-cover w-full h-60 sm:h-80 md:h-64 lg:h-72"
             />
@@ -99,9 +99,9 @@ function Blog() {
         </div>
 
         <div className="overflow-hidden rounded-lg shadow-lg cursor-pointer">
-          <a href="#" className="block w-full h-full">
+          <a href="/" className="block w-full h-full">
             <img
-              alt="blog photo"
+              alt="A farmer wearing a straw hat"
               src="https://res.cloudinary.com/dxetyokin/image/upload/c_scale,f_auto,q_auto/v1676984967/Assigment%201/pexels-jake-heinemann-1482101_kminaj.jpg"
               className="object-cover w-full h-60 sm:h-80 md:h-64 lg:h-72"
             />

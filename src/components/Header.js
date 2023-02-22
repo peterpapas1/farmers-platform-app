@@ -1,60 +1,32 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import HeaderNavLink from "../components/HeaderNavLink";
 
 function Header() {
   return (
     <div>
-      <nav class="bg-white dark:bg-gray-800  shadow ">
-        <div class="px-8 mx-auto max-w-7xl">
-          <div class="flex items-center justify-between h-16">
-            <div class=" flex items-center">
-              <a class="flex-shrink-0" href="/">
+      <nav className="bg-white dark:bg-gray-800  shadow ">
+        <div className="px-8 mx-auto max-w-7xl">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <NavLink to="/" className="flex-shrink-0">
                 <h1 className="font-size: 8rem">🚜</h1>
-              </a>
-              <div class="hidden md:block">
-                <div class="flex items-baseline ml-10 space-x-4">
-                  <a
-                    class="text-gray-800 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    href="/"
-                  >
-                    Weather
-                  </a>
-                  <a
-                    class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    href="/Manuals"
-                  >
-                    Manuals
-                  </a>
-                  <a
-                    class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    href="/Blog"
-                  >
-                    Blog
-                  </a>
+              </NavLink>
+              <div className="hidden md:block">
+                <div className="flex items-baseline ml-10 space-x-4">
+                  <HeaderNavLink to="/">Weather</HeaderNavLink>
+                  <HeaderNavLink to="/Manuals">Manuals</HeaderNavLink>
+                  <HeaderNavLink to="/Blog">Blog</HeaderNavLink>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="md:hidden">
-          <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
-              class="text-gray-500 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/"
-            >
-              Weather
-            </a>
-            <a
-              class="text-gray-500 dark:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/Manuals"
-            >
-              Manuals
-            </a>
-            <a
-              class="text-gray-500 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-              href="/Blog"
-            >
-              Blog
-            </a>
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <HeaderNavLink to="/">Weather</HeaderNavLink>
+            <HeaderNavLink to="/Manuals">Manuals</HeaderNavLink>
+            <HeaderNavLink to="/Blog">Blog</HeaderNavLink>
           </div>
         </div>
       </nav>
