@@ -8,7 +8,7 @@ function Manuals() {
       <div className="flex flex-col items-center">
         <div className="w-72 flex-shrink-0 shadow-lg rounded-lg overflow-hidden m-4">
           <a
-            href="/app/download/9021266620/AGCO+Allis+1300+Series+FrontCut+Operator%27s+Manual.pdf?t=1599935694"
+            href="https://res.cloudinary.com/dxetyokin/image/upload/v1676986201/Assigment%201/512_series_gitwzk.pdf"
             className="block bg-white hover:bg-gray-100 transition-colors duration-300"
           >
             <img
@@ -31,7 +31,7 @@ function Manuals() {
         </div>
         <div className="w-72 flex-shrink-0 shadow-lg rounded-lg overflow-hidden m-4">
           <a
-            href="/app/download/9021266620/AGCO+Allis+1300+Series+FrontCut+Operator%27s+Manual.pdf?t=1599935694"
+            href="https://res.cloudinary.com/dxetyokin/image/upload/v1676986201/Assigment%201/512_series_gitwzk.pdf"
             className="block bg-white hover:bg-gray-100 transition-colors duration-300"
           >
             <img
@@ -54,7 +54,7 @@ function Manuals() {
         </div>
         <div className="w-72 flex-shrink-0 shadow-lg rounded-lg overflow-hidden m-4">
           <a
-            href="/app/download/9021266620/AGCO+Allis+1300+Series+FrontCut+Operator%27s+Manual.pdf?t=1599935694"
+            href="https://res.cloudinary.com/dxetyokin/image/upload/v1676986201/Assigment%201/512_series_gitwzk.pdf"
             className="block bg-white hover:bg-gray-100 transition-colors duration-300"
           >
             <img
@@ -77,7 +77,7 @@ function Manuals() {
         </div>
         <div className="w-72 flex-shrink-0 shadow-lg rounded-lg overflow-hidden m-4">
           <a
-            href="/app/download/9021266620/AGCO+Allis+1300+Series+FrontCut+Operator%27s+Manual.pdf?t=1599935694"
+            href="https://res.cloudinary.com/dxetyokin/image/upload/v1676986201/Assigment%201/512_series_gitwzk.pdf"
             className="block bg-white hover:bg-gray-100 transition-colors duration-300"
           >
             <img
