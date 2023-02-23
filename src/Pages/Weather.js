@@ -7,7 +7,7 @@ import LocationButton from "../components/LocationButton";
 
 function Weather() {
   const [width, setWidth] = useState(window.innerWidth);
-  const [city, setCity] = useState("melbourne");
+  const [city, setCity] = useState("");
   const [LAT, setLat] = useState(null);
   const [LON, setLon] = useState(null);
   const [SliderMaxTempValue, setSliderMaxTempValue] = useState(27);
@@ -22,6 +22,11 @@ function Weather() {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const handleLocationChange = (lat, lon) => {
+    setLat(lat);
+    setLon(lon);
+  };
 
   const handleResize = () => setWidth(window.innerWidth);
 
@@ -88,7 +93,7 @@ function Weather() {
             growth.
           </p>
 
-          <LocationButton />
+          <LocationButton onLocationChange={handleLocationChange} />
 
           <label
             htmlFor="cityname"

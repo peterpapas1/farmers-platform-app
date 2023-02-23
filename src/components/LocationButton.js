@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function LocationButton() {
+function LocationButton({ onLocationChange }) {
   const [location, setLocation] = useState(null);
 
   const handleClick = () => {
@@ -9,6 +9,7 @@ function LocationButton() {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
         setLocation({ lat, lon });
+        onLocationChange(lat, lon);
       });
     } else {
       alert("Geolocation is not supported by this browser.");
@@ -23,12 +24,6 @@ function LocationButton() {
       >
         Use Location
       </button>
-      {location && (
-        <div>
-          <p>Latitude: {location.lat}</p>
-          <p>Longitude: {location.lon}</p>
-        </div>
-      )}
     </div>
   );
 }
