@@ -192,12 +192,18 @@ function ApiCall(props) {
       <div className="w-auto p-4 m-auto bg-white shadow-lg rounded-2xl dark:bg-gray-800">
         <div className="flex flex-col items-center justify-center">
           <div className="flex items-center space-x-2">
-            <h1 className="text-2xl font-bold">🌾{cityName}🌾</h1>
+            <h1 className="text-2xl font-bold dark:text-white">
+              🌾{cityName}🌾
+            </h1>
           </div>
           <div className="flex flex-col space-y-2">
-            <p>Current temperature is: {temperature}°C</p>
-            <p>Current humidity is: {humidity}%</p>
-            <p>Current wind speed is: {windSpeed} m/s</p>
+            <p className="dark:text-white">
+              Current temperature is: {temperature}°C
+            </p>
+            <p className="dark:text-white">Current humidity is: {humidity}%</p>
+            <p className="dark:text-white">
+              Current wind speed is: {windSpeed} m/s
+            </p>
             {/* <p>Max temperature: {maxTemp}°C</p>
         <p>Min temperature: {minTemp}°C</p> */}
           </div>
@@ -281,23 +287,27 @@ function ApiCall(props) {
           <div className="w-auto p-4 m-auto bg-white shadow-lg rounded-2xl dark:bg-gray-800">
             <div className="flex flex-col items-center justify-center">
               <p className="">Date: {day.dt_txt}</p>
-              <p className="text-xl font-semibold mb-2">{weekday}</p>
-              <p className="text-3xl font-bold mb-2">{day.main.temp}°C</p>
+              <p className="text-xl font-semibold mb-2 dark:text-white">
+                {weekday}
+              </p>
+              <p className="text-3xl font-bold mb-2 dark:text-white">
+                {day.main.temp}°C
+              </p>
               <div className="flex items-center mb-2">
                 <img
                   className="w-8 h-8 mr-2"
                   src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
                   alt="Weather icon"
                 />
-                <p className="text-lg font-medium">
+                <p className="text-lg font-medium dark:text-white">
                   {day.weather[0].description}
                 </p>
               </div>
               <div className="flex items-center justify-between w-full">
-                <p className="text-sm font-medium">
+                <p className="text-sm font-medium dark:text-white">
                   Humidity: {day.main.humidity}%
                 </p>
-                <p className="text-sm font-medium">
+                <p className="text-sm font-medium dark:text-white">
                   Wind: {day.wind.speed} m/s
                 </p>
               </div>
@@ -308,7 +318,7 @@ function ApiCall(props) {
                 className="bg-green-200 border-green-600 text-green-600 border-l-4 p-4"
                 role="alert"
               >
-                <p className="font-bold">Ideal</p>
+                <p className="font-bold ">Ideal</p>
                 <p>Temperature is ideal for wheat growth.</p>
               </div>
             ) : (
