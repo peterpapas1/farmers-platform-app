@@ -79,49 +79,48 @@ function Weather() {
   }, [city]);
 
   return (
-    <div className="App bg-gradient-to-r from-cyan-500 to-blue-500">
-      <div className="bg-white m-auto sm:max-w-xs md:max-w-sm drop-shadow-xl rounded-lg ">
-        <div className=" mr-2 ml-2  space-y-2">
-          <div className="m-5 flex items-center flex-col">
-            <p className="text-2xl">🌾Wheat🌾</p>
-            <p className="text-1xl font-semibold">Custom Weather Forecast</p>
-          </div>
-          <hr />
-          <p>
-            You can use your current location or Search for the city that you
-            would like to check if the weather would be optimal for wheat
-            growth.
-          </p>
-
+    <div className="bg-gradient-to-r from-cyan-500 to-blue-500 min-h-screen flex items-center justify-center">
+      <div className="bg-white max-w-md mx-auto rounded-lg shadow-xl p-6">
+        <div className="text-center">
+          <p className="text-2xl">🌾Wheat🌾</p>
+          <p className="text-lg font-semibold mb-4">Custom Weather Forecast</p>
+        </div>
+        <hr className="my-4" />
+        <p className="text-sm mb-4">
+          You can use your current location or search for the city that you
+          would like to check if the weather would be optimal for wheat growth.
+        </p>
+        <div className="mb-4">
           <LocationButton onLocationChange={handleLocationChange} />
-
-          <label
-            htmlFor="cityname"
-            className="block font-medium text-gray-700 mb-2"
-          >
-            City Name:
-          </label>
-          <input
-            id="cityname"
-            className={`block w-full px-4 py-2 border rounded-md bg-white text-gray-900 ${
-              city.length === 0
-                ? "border-red-500 focus:border-red-500 focus:ring-red-500"
-                : "border-gray-300 focus:border-purple-500 focus:ring-purple-500"
-            } focus:outline-none focus:ring-2 transition duration-300 ease-in-out`}
-            placeholder="Name of the city"
-            type="text"
-            value={city}
-            onChange={handleCityChange}
-            required
-          />
-          <hr />
-          {/* Custom Absolute Temps */}
-          <p>
-            Provide custom absolute 'maximum' and 'minimum' tempretures that
-            would you like to get results for.
+        </div>
+        <label
+          htmlFor="cityname"
+          className="block font-medium text-gray-700 mb-2"
+        >
+          City Name:
+        </label>
+        <input
+          id="cityname"
+          className={`block w-full px-4 py-2 border rounded-md bg-white text-gray-900 ${
+            city.length === 0
+              ? "border-red-500 focus:border-red-500 focus:ring-red-500"
+              : "border-gray-300 focus:border-purple-500 focus:ring-purple-500"
+          } focus:outline-none focus:ring-2 transition duration-300 ease-in-out mb-4`}
+          placeholder="Name of the city"
+          type="text"
+          value={city}
+          onChange={handleCityChange}
+          required
+        />
+        <hr className="my-4" />
+        <p className="text-sm mb-4">
+          Provide custom absolute 'maximum' and 'minimum' temperatures that you
+          would like to get results for.
+        </p>
+        <div className="mb-4">
+          <p className="mb-2">
+            Absolute Maximum Temperature: {SliderMaxTempValue}°C
           </p>
-          <p>Absolute Maximum Temperature: {SliderMaxTempValue}°C</p>
-
           <Slider
             getAriaLabel={() => "Temperature range"}
             onChange={handleSliderMaxTempValueChange}
@@ -131,7 +130,11 @@ function Weather() {
             min={-100}
             max={100}
           />
-          <p>Absolute Minimum Temperature: {SliderMinTempValue}°C</p>
+        </div>
+        <div className="mb-4">
+          <p className="mb-2">
+            Absolute Minimum Temperature: {SliderMinTempValue}°C
+          </p>
           <Slider
             getAriaLabel={() => "Temperature range"}
             onChange={handleSliderMinTempValueChange}
@@ -141,14 +144,16 @@ function Weather() {
             min={-100}
             max={100}
           />
-          <hr />
-          {/* Custom Ideal Temps*/}
-          <p>
-            Provide custom Ideal 'maximum' and 'minimum' tempretures that would
-            you like to get results for.
+        </div>
+        <hr className="my-4" />
+        <p className="text-sm mb-4">
+          Provide custom ideal 'maximum' and 'minimum' temperatures that you
+          would like to get results for.
+        </p>
+        <div className="mb-4">
+          <p className="mb-2">
+            Ideal Maximum Temperature: {SliderIdealMaxTempValue}°C
           </p>
-          <p>Ideal Maximum Temperature: {SliderIdealMaxTempValue}°C</p>
-
           <Slider
             getAriaLabel={() => "Temperature range"}
             onChange={handleSliderIdealMaxTempValueChange}
@@ -158,51 +163,68 @@ function Weather() {
             min={-100}
             max={100}
           />
-          <p>Ideal Minimum Temperature: {SliderIdealMinTempValue}°C</p>
-          <Slider
-            getAriaLabel={() => "Temperature range"}
-            onChange={handleSliderIdealMinTempValueChange}
-            valueLabelDisplay="auto"
-            defaultValue={18}
-            // getAriaValueText={SliderValue}
-            min={-100}
-            max={100}
-          />
-          <hr />
-          <p>Provide custom Humidity that would you like to get results for.</p>
-          <p>Max Humidity: {SliderMaxHumidityValue}%</p>
-          <Slider
-            getAriaLabel={() => "Temperature range"}
-            onChange={handleSliderMaxHumidityValueChange}
-            valueLabelDisplay="auto"
-            defaultValue={70}
-            // getAriaValueText={SliderValue}
-            min={0}
-            max={100}
-          />
-          <p>Min Humidity: {SliderMinHumidityValue}%</p>
-          <Slider
-            getAriaLabel={() => "Temperature range"}
-            onChange={handleSliderMinHumidityValueChange}
-            valueLabelDisplay="auto"
-            defaultValue={60}
-            // getAriaValueText={SliderValue}
-            min={0}
-            max={100}
-          />
-          {LAT && LON ? (
-            <ApiCall
-              LAT={LAT}
-              LON={LON}
-              SliderMaxTempValue={SliderMaxTempValue}
-              SliderMinTempValue={SliderMinTempValue}
-              SliderMaxHumidityValue={SliderMaxHumidityValue}
-              SliderMinHumidityValue={SliderMinHumidityValue}
-              SliderIdealMaxTempValue={SliderIdealMaxTempValue}
-              SliderIdealMinTempValue={SliderIdealMinTempValue}
-            />
-          ) : null}
         </div>
+        <hr />
+        {/* Custom Ideal Temps*/}
+        <p>
+          Provide custom Ideal 'maximum' and 'minimum' tempretures that would
+          you like to get results for.
+        </p>
+        <p>Ideal Maximum Temperature: {SliderIdealMaxTempValue}°C</p>
+
+        <Slider
+          getAriaLabel={() => "Temperature range"}
+          onChange={handleSliderIdealMaxTempValueChange}
+          valueLabelDisplay="auto"
+          defaultValue={24}
+          // getAriaValueText={SliderValue}
+          min={-100}
+          max={100}
+        />
+        <p>Ideal Minimum Temperature: {SliderIdealMinTempValue}°C</p>
+        <Slider
+          getAriaLabel={() => "Temperature range"}
+          onChange={handleSliderIdealMinTempValueChange}
+          valueLabelDisplay="auto"
+          defaultValue={18}
+          // getAriaValueText={SliderValue}
+          min={-100}
+          max={100}
+        />
+        <hr />
+        <p>Provide custom Humidity that would you like to get results for.</p>
+        <p>Max Humidity: {SliderMaxHumidityValue}%</p>
+        <Slider
+          getAriaLabel={() => "Temperature range"}
+          onChange={handleSliderMaxHumidityValueChange}
+          valueLabelDisplay="auto"
+          defaultValue={70}
+          // getAriaValueText={SliderValue}
+          min={0}
+          max={100}
+        />
+        <p>Min Humidity: {SliderMinHumidityValue}%</p>
+        <Slider
+          getAriaLabel={() => "Temperature range"}
+          onChange={handleSliderMinHumidityValueChange}
+          valueLabelDisplay="auto"
+          defaultValue={60}
+          // getAriaValueText={SliderValue}
+          min={0}
+          max={100}
+        />
+        {LAT && LON ? (
+          <ApiCall
+            LAT={LAT}
+            LON={LON}
+            SliderMaxTempValue={SliderMaxTempValue}
+            SliderMinTempValue={SliderMinTempValue}
+            SliderMaxHumidityValue={SliderMaxHumidityValue}
+            SliderMinHumidityValue={SliderMinHumidityValue}
+            SliderIdealMaxTempValue={SliderIdealMaxTempValue}
+            SliderIdealMinTempValue={SliderIdealMinTempValue}
+          />
+        ) : null}
       </div>
     </div>
   );
