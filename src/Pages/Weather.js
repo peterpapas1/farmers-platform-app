@@ -3,6 +3,7 @@ import ApiCall from "../components/apicall";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Slider from "@mui/material/Slider";
+import LocationButton from "../components/LocationButton";
 
 function Weather() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -82,9 +83,12 @@ function Weather() {
           </div>
           <hr />
           <p>
-            Search for the city that you would like to check if the weather
-            would be optimal for wheat growth.
+            You can use your current location or Search for the city that you
+            would like to check if the weather would be optimal for wheat
+            growth.
           </p>
+
+          <LocationButton />
 
           <label
             htmlFor="cityname"
