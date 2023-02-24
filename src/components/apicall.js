@@ -286,7 +286,7 @@ function ApiCall(props) {
         return (
           <div className="w-auto p-4 m-auto bg-white shadow-lg rounded-2xl dark:bg-gray-800">
             <div className="flex flex-col items-center justify-center">
-              <p className="">Date: {day.dt_txt}</p>
+              <p className="dark:text-white">Date: {day.dt_txt}</p>
               <p className="text-xl font-semibold mb-2 dark:text-white">
                 {weekday}
               </p>
